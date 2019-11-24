@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Testando BS4 sidebar</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	</head>
+	<body>
+		<!-- BEGIN OF CSS YOU NEED TO USE -->
+		<style type="text/css">
+			@media only screen and (max-width:992px){
+				.navbar{
+					position: unset;
+				}
+
+				#navbarCollapse{
+					left: 0;
+					top:0;
+					transition: .1s!important;
+					transform: translateX(-100%) translateY(0);
+					position: absolute;
+					width: 80%;
+					margin: 0!important;
+					padding: 0!important;
+					height: 100%!important;
+					z-index: 1000;
+					background-color: #e6e6e6;
+				}
+
+				.menu-item{
+					width: 100%;
+					padding:10px 20px;
+					border-top: 1px solid rgba(0,0,0,.15);
+					border-radius: unset;
+				}
+
+
+				.dropdown-menu{
+					background-color: transparent;
+					border:none;
+					padding: .1rem;
+				}
+
+
+				.overlay{
+					left: 0;
+					top:0;
+					z-index: 999;
+					transition: .05s!important;
+					transform: translateX(-100%) translateY(0);
+					position: absolute;
+					height: 100%;
+					width: 100%!important;
+					background-color:rgba(0, 0, 0, 0.3)!important;
+				}
+
+				.show-sidebar{
+					left: 0;
+					top:0;
+					transform: translateX(0) translateY(0)!important;
+					position: absolute;
+					background-color: #e6e6e6;
+				}
+				.close{
+					max-width: 20%;
+				}
+			}
+		</style>
+		<!-- END OF CSS YOU NEED TO USE -->
+		<nav id="top" class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 1px 1px 10px grey;">
+			<div class="container">
+				<div class="d-flex flex-column align-items-start w-100">
+					<div class="row align-items-center w-100 clearfix">
+						<button class="navbar-toggler collapsed float-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+					</div>
+					<div id="navbarCollapse" class="navbar-collapse ml-lg-0 collapse">
+						<ul id="menu-principal" class="navbar-nav">
+							<li class="menu-item">
+								<img class="float-left" style="max-width:80%;" src="https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png"/> 
+								<div class="close d-lg-none" style="position: relative;">
+									<button class="btn-link navbar-toggler" style="position: absolute;top:50%;transform: translateY(50%);right:.2rem;" type="button" data-toggle="collapse" data-target="#navbarCollapse"><i class="fas fa-times"></i></a>
+								</div>
+							</li>
+							<li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children menu-item-18 nav-item dropdown">
+								<a href="http://localhost:8000" class="nav-link dropdown-toggle" data-toggle="dropdown">Início</a>
+								<div class="dropdown-menu">
+									<a href="http://localhost:8000/index.php/category/sem-categoria/" class=" dropdown-item active">Sem categoria</a><a href="http://localhost:8000/index.php/pagina-exemplo/" class=" dropdown-item">Página de exemplo</a>
+								</div>
+							</li>
+							<li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children menu-item-18 nav-item dropdown">
+								<a href="http://localhost:8000" class="nav-link dropdown-toggle" data-toggle="dropdown">Início</a>
+								<div class="dropdown-menu">
+									<a href="http://localhost:8000/index.php/category/sem-categoria/" class=" dropdown-item active">Sem categoria</a><a href="http://localhost:8000/index.php/pagina-exemplo/" class=" dropdown-item">Página de exemplo</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- ADD THIS DIV AFTER NAV-TOGGLE OF CSS YOU NEED TO USE -->
+					<div class="overlay"></div>
+				</div>
+			</div>
+		</nav>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- BEGIN OF JS YOU NEED TO USE -->
+		<script type="text/javascript">
+			$(".navbar-toggler").click(function(){
+				$("#navbarCollapse").toggleClass("show-sidebar");
+				setTimeout(function(){
+					$(".overlay").toggleClass("show-sidebar");
+				});
+			});
+		</script>
+		<!-- END OF JS YOU NEED TO USE -->
+	</body>
+</html>
